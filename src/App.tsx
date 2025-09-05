@@ -54,7 +54,8 @@ function App() {
         const freshData = await fetchStockQuote(selectedStock.symbol);
         setSelectedStock(freshData);
       } catch (error) {
-        console.error('Failed to load initial stock data:', error);
+        console.warn('Using default stock data:', error);
+        // Keep the existing selectedStock data as fallback
       }
     };
     
