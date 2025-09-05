@@ -76,6 +76,20 @@ export const getPredictionFromModel = async (
   model: AIModel, 
   request: PredictionRequest
 ): Promise<AIPrediction> => {
+  // Check if API key is available and not demo
+  if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'demo') {
+    console.warn('Using mock prediction - OpenRouter API key not configured');
+    return {
+      model: model.name,
+      prediction: ['Bullish', 'Bearish', 'Neutral'][Math.floor(Math.random() * 3)] as 'Bullish' | 'Bearish' | 'Neutral',
+      confidence: Math.floor(Math.random() * 40) + 50, // 50-90%
+      targetPrice: request.currentPrice * (0.95 + Math.random() * 0.1), // ±5% of current price
+      timeframe: '1 Week',
+      reasoning: `Mock prediction for ${request.symbol}. This is a simulated analysis based on current market conditions. API key required for real AI predictions.`,
+      riskLevel: ['Low', 'Medium', 'High'][Math.floor(Math.random() * 3)] as 'Low' | 'Medium' | 'High'
+    };
+  }
+
   try {
     const response = await fetch(BASE_URL, {
       method: 'POST',

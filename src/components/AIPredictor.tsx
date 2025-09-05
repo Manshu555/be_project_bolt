@@ -103,10 +103,10 @@ const AIPredictor: React.FC<AIPredictorProps> = ({
       </div>
 
       {/* API Key Notice */}
-      <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-        <h4 className="text-sm font-medium text-green-400 mb-2">AI Models Ready</h4>
+      <div className="mb-6 p-4 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+        <h4 className="text-sm font-medium text-amber-400 mb-2">Demo Mode</h4>
         <p className="text-xs text-amber-300">
-          Connected to OpenRouter AI models. Real predictions will be generated using live market data.
+          Using mock predictions. Add your OpenRouter API key to the .env file for real AI analysis.
         </p>
       </div>
 
